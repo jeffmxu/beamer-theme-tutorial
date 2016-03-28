@@ -1,0 +1,312 @@
+%============================================================
+% 	Theme		::	`tutorial' Beamer Theme
+%					-- BASED on Szeged (Till Tantau)
+%					----------------------------------------
+%	Color		::	Self-Contained
+%					-- mainly `whale' Beamer Color Theme
+%					-- with Rich Black, Beach Pink & Teal
+%					----------------------------------------
+%	Font		::	Fira Sans Beamer Font Theme
+%					-- Mozilla's Fira Sans Typeface
+%					-- FROM Metropolis (Matthias Vogelgesang)
+%					-- use XeLaTeX for better visual effects
+%					----------------------------------------
+%	Author		::	Xu, Minjie (Jeff)
+%	Created		::	2016-02-10
+%	Updated		::	March 28, 2016 at 02:22AM (CST)
+%	Version		::	0.3.6
+%	Contact		::	GitHub.com/jeffmxu
+%					-----------------------------------------
+% 	License		::	LPPL 1.3c or later
+%					GNU GPLv4 or later
+%					CC-BY-SA 4.0 or later
+% 	Notice		::	Copyright 2016 XU Minjie (Jeff)
+%					This `tutorial' beamer theme may be distributed and/or modified under the LaTeX Project Public License (version 1.3 or later) and/or under the GNU General Public License (version 3.0 or later).
+%					This `tutorial' beamer theme is also required to be licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (or any later version).
+%					----------------------------------------
+%	Description	::	`tutorial' beamer theme is BUILT mimicing Szeged beamer theme from Beamer class of Till Tantau.
+%					Its design IDEA and FONT theme comes FROM Metropolis of Matthias Vogelgesang (GitHub.com/matze).
+%	Purpose		::	Designed for a TRADITIONAL academic presentation with a MODERN taste --- originally for economics tutorials
+%============================================================
+
+
+
+%============================================================
+%	Contents	::	01. PACKAGE OPTIONS & SETUP
+%					02. PACKAGES & (BEAMER) THEMES
+%					-----------------------------------------
+%					03. COLOR SPECIFICATIONS
+%					04. SYMBOL SPECIFICATIONS
+%					-----------------------------------------
+%					05. HEADLINE & FOOTLINE
+%					06. FRAMETITLE
+%					07. TITLE PAGE
+%					08. TABLE OF CONTENTS
+%					09. REFERENCE PAGE
+%============================================================
+
+
+
+%============================================================
+%	01. PACKAGE OPTIONS & SETUP
+%------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemetutorial}[2016/03/28 `tutorial' Beamer Theme v0.3.6]
+%------------------------------------------------------------
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}% not sure about this
+
+\newif\if@useLightTheme
+\@useLightThemefalse
+\DeclareOptionBeamer{light}{\@useLightThemetrue}
+
+\newif\if@useMinimalTheme
+\@useMinimalThemefalse
+\DeclareOptionBeamer{minimal}{\@useMinimalThemetrue}
+
+\ProcessOptionsBeamer
+\mode<presentation>
+%============================================================
+
+
+
+%============================================================
+%	02. TIKZ & THEMES
+%------------------------------------------------------------
+\RequirePackage{tikz}%wasysym
+\usetikzlibrary{fadings}%backgrounds, calc, 
+%------------------------------------------------------------
+%\usecolortheme{whale}% color theme imported below
+\usefonttheme{fira}
+\linespread{1.15}
+%============================================================
+
+
+
+%============================================================
+%	03. COLOR SPECIFICATIONS
+%------------------------------------------------------------
+\definecolor{BlendedBlue}{rgb}{.2,.2,.7}% beamer@blendedblue
+\definecolor{RichBlack}{cmyk}{.5,.5,.5,1}
+\definecolor{BeachPink}{cmyk}{0,.87,.68,0}
+\definecolor{BeachTeal}{cmyk}{.86,0,.24,.29}
+%------------------------------------------------------------
+\setbeamercolor{structure}{bg=white}% fg=BlendedBlue
+\setbeamercolor{normal text}{fg=RichBlack}% bg=white
+\setbeamercolor{alerted text}{fg=BeachPink}
+\setbeamercolor{example text}{fg=BeachTeal}
+%------------------------------------------------------------
+\setbeamercolor*{palette primary}{use=structure, fg=structure.bg, bg=structure.fg}% opposite structure
+%\setbeamercolor*{palette secondary}{use=structure, fg=structure.fg!75!black, bg=structure.bg}%
+%\setbeamercolor*{palette tertiary}{use=structure, fg=structure.bg, bg=structure.fg!50!black}
+%\setbeamercolor*{palette quaternary}{use=normal text, fg=normal text.bg, bg=normal text.fg}
+
+%\setbeamercolor*{sidebar}{use=structure, bg=structure.fg}% fg=?
+%\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+%\setbeamercolor*{palette sidebar secondary}{use=structure, fg=structure.bg}
+%\setbeamercolor*{palette sidebar tertiary}{use=structure, fg=structure.fg!50}
+%\setbeamercolor*{palette sidebar quaternary}{use=structure, fg=structure.bg}
+
+%\setbeamercolor*{separation line}{}
+%\setbeamercolor*{fine separation line}{}
+
+\if@useLightTheme%
+	\setbeamercolor*{titlelike}{parent=structure}
+	\setbeamercolor*{section in head/foot}{use=structure, fg=structure.fg!75!black, bg=structure.bg}
+\else%
+	\setbeamercolor*{titlelike}{use=structure, fg=structure.bg, bg=structure.fg}
+	\setbeamercolor*{section in head/foot}{use=structure, fg=structure.bg, bg=structure.fg!75!black}
+\fi%
+\setbeamercolor*{title page}{parent=structure}
+\if@useMinimalTheme%
+	\setbeamercolor*{footline}{parent=use=normal text, fg=normal text.fg!40, bg=normal text.bg}
+\else%
+	\setbeamercolor*{footline}{parent=section in head/foot}
+\fi%
+%============================================================
+
+
+
+%============================================================
+%	04. SYMBOL SPECIFICATIONS
+%------------------------------------------------------------
+%\setbeamertemplate{itemize item}{\raisebox{.5pt}{$\Circle$}}% requires WASYSYM package
+%\setbeamertemplate{itemize subitem}{$\circ$}%
+%\setbeamertemplate{itemize subsubitem}{\raisebox{.5pt}{\scriptsize$\circ$}}%
+\setbeamertemplate{itemize item}{\raisebox{.08ex}{$\vartriangleright$}}
+\setbeamertemplate{itemize subitem}{\raisebox{.08ex}{$\vartriangleright$}}%\footnotesize
+\setbeamertemplate{itemize subsubitem}{\raisebox{.08ex}{$\vartriangleright$}}%\tiny
+%------------------------------------------------------------
+\setbeamertemplate{caption label separator}{\enskip}%
+%------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{}%
+%============================================================
+
+
+
+%============================================================
+%	05. HEADLINE & FOOTLINE
+%------------------------------------------------------------
+\setbeamertemplate{headline}{%
+	\if@useMinimalTheme%
+		% no headline if minimalist
+	\else%
+		\begin{beamercolorbox}{section in head/foot}
+			\vskip2pt%
+			{\ifnum\insertpagenumber=1%
+				\pgfsetfillopacity{0}%
+			\fi}%
+			\insertsectionnavigationhorizontal{\paperwidth}{}{}%\insertnavigation
+			\pgfsetfillopacity{1}%
+			\if@useLightTheme%
+			%	\vskip-2pt%
+			\else%
+				\vskip2pt%
+			\fi%
+		\end{beamercolorbox}%
+	\fi%
+}%
+%------------------------------------------------------------
+\setbeamertemplate{footline}{%
+	\leavevmode%
+	\hbox{%
+		\if@useMinimalTheme%
+			\ifnum\insertpagenumber=1%
+				\begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.125ex]{footline}\end{beamercolorbox}%
+				% no visual effect but to debug
+			\else%
+				\begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.125ex, right, rightskip=1.125ex]{footline}%
+					\usebeamerfont{page number in head/foot}%
+					\insertframenumber%/\inserttotalframenumber%
+				\end{beamercolorbox}%
+			\fi%
+		\else%
+			\ifnum\insertpagenumber=1%
+				\begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.125ex, center]{footline}\end{beamercolorbox}%
+			\else%
+				\begin{beamercolorbox}[wd=.312\paperwidth, ht=2.5ex, dp=1.125ex, center]{footline}%
+					\usebeamerfont{author in head/foot}%
+					\insertshortauthor%~~\beamer@ifempty{\insertshortinstitute}{}{}%
+				\end{beamercolorbox}%
+				\begin{beamercolorbox}[wd=.312\paperwidth, ht=2.5ex, dp=1.125ex, center]{footline}%
+					\usebeamerfont{title in head/foot}%
+					\insertshorttitle%
+				\end{beamercolorbox}%
+				\begin{beamercolorbox}[wd=.312\paperwidth, ht=2.5ex, dp=1.125ex, center]{footline}%
+					\usebeamerfont{institute in head/foot}%
+					\insertshortinstitute%
+				\end{beamercolorbox}%
+				\begin{beamercolorbox}[wd=.064\paperwidth, ht=2.5ex, dp=1.125ex, right, rightskip=1.125ex]{footline}%
+					\usebeamerfont{page number in head/foot}%
+					\insertframenumber/\inserttotalframenumber%
+				\end{beamercolorbox}%
+			\fi%
+		\fi%
+	}%
+}%
+%============================================================
+
+
+
+%============================================================
+%	06. FRAMETITLE
+%------------------------------------------------------------
+\newdimen\frametitleheight%
+\newdimen\frametitledepth%
+\setbeamertemplate{frametitle}{%
+	\nointerlineskip%
+	\if@useMinimalTheme%
+		\frametitleheight=2.5ex%
+		\frametitledepth=1.2ex%
+	\else%
+		\frametitleheight=2.25ex%
+		\frametitledepth=1ex%
+	\fi%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=.3cm,ht=\frametitleheight,dp=\frametitledepth]{frametitle}%
+		\usebeamerfont{frametitle}{\insertframetitle}%
+	\end{beamercolorbox}%
+}%
+%============================================================
+
+
+
+%============================================================
+%	07. TITLE PAGE
+%------------------------------------------------------------
+\tikzfading[name=fading line, left color=transparent!0, middle color=transparent!0, right color=transparent!100]
+
+\newdimen\titlepage@upperheight	% upper part height
+\newdimen\titlepage@lowerheight	% lower part height
+	\titlepage@upperheight=.5\paperheight%
+	\titlepage@lowerheight=.5\paperheight%
+
+\def\maketitle{%
+	\ifbeamer@inframe%
+		\advance\titlepage@upperheight by -\headheight%
+		\advance\titlepage@lowerheight by -\footheight%
+		\addtocounter{framenumber}{-1}%
+		\titlepage%
+	\else%
+		\frame[plain,noframenumbering]{\titlepage}%
+	\fi%
+	}%
+
+\def\titlepage{%
+	\thispdfpagelabel{title}%
+	\usebeamertemplate{title page}%
+	}%
+
+% complication for arbitrary color theme adoption
+% commented command CANNOT update TITLE LINE color
+\AtBeginDocument{%
+	\newcommand\fadingtitleline{%
+	\tikz[baseline]\fill[title page.fg, path fading=fading line, thin, line width=0pt, line cap=butt] (0,0) rectangle (\textwidth,.1pt);
+	%{\usebeamercolor{title page}\tikz[baseline]\path[left color=fg, middle color=fg, right color=bg] (0,0) rectangle (\textwidth,.1pt);}%
+	}%
+}%
+
+\setbeamertemplate{title page}{%
+	\begin{minipage}[b][\titlepage@upperheight]{\textwidth}%
+		{\usebeamercolor[fg]{title page}%
+			{\usebeamerfont{title}\inserttitle\par}
+			\vskip\medskipamount%
+			{\usebeamerfont{subtitle}\insertsubtitle\par}%
+		}%
+		\fadingtitleline%
+		% commented command CANNOT update TITLE LINE color
+		%\begin{tikzpicture}[baseline]
+		%	\usebeamercolor{title page}%
+		%	\path[left color=fg, middle color=bg, right color=bg] (0,0) rectangle (\textwidth,.1pt);%
+		%\end{tikzpicture}%
+	\end{minipage}
+	\begin{minipage}[t][\titlepage@lowerheight]{\textwidth}%
+		\vskip\smallskipamount%
+		{\usebeamerfont{author}\insertauthor\par}
+		\vskip\smallskipamount%
+		{\usebeamerfont{institute}\insertinstitute\par}
+		\vskip\bigskipamount%
+		{\usebeamerfont{date}\insertdate\par}
+		%\vfill\raggedleft\inserttitlegraphic%
+	\end{minipage}
+}%
+%============================================================
+
+
+
+%============================================================
+%	08. TABLE OF CONTENTS
+%------------------------------------------------------------
+\setbeamertemplate{section in toc}[sections numbered]
+%============================================================
+
+
+
+%============================================================
+%	09. REFERENCE PAGE
+%------------------------------------------------------------
+\setbeamertemplate{bibliography item}[text]%
+%============================================================
+
+
+
+\mode<all>
+% End of file `beamerthemetutorial.sty'
