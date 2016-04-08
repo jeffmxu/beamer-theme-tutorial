@@ -13,7 +13,7 @@
 %					----------------------------------------
 %	Author		::	Xu, Minjie (Jeff)
 %	Created		::	2016-02-10
-%	Updated		::	March 28, 2016 at 02:22AM (CST)
+%	Updated		::	April 07, 2016 at 08:08PM (CST)
 %	Version		::	0.3.6
 %	Contact		::	GitHub.com/jeffmxu
 %					-----------------------------------------
@@ -132,9 +132,11 @@
 %\setbeamertemplate{itemize item}{\raisebox{.5pt}{$\Circle$}}% requires WASYSYM package
 %\setbeamertemplate{itemize subitem}{$\circ$}%
 %\setbeamertemplate{itemize subsubitem}{\raisebox{.5pt}{\scriptsize$\circ$}}%
-\setbeamertemplate{itemize item}{\raisebox{.08ex}{$\vartriangleright$}}
-\setbeamertemplate{itemize subitem}{\raisebox{.08ex}{$\vartriangleright$}}%\footnotesize
-\setbeamertemplate{itemize subsubitem}{\raisebox{.08ex}{$\vartriangleright$}}%\tiny
+\if@useLightTheme%
+	\setbeamertemplate{itemize item}{\raisebox{.08ex}{$\vartriangleright$}}
+	\setbeamertemplate{itemize subitem}{\raisebox{.08ex}{$\vartriangleright$}}%\footnotesize
+	\setbeamertemplate{itemize subsubitem}{\raisebox{.08ex}{$\vartriangleright$}}%\tiny
+\fi%
 %------------------------------------------------------------
 \setbeamertemplate{caption label separator}{\enskip}%
 %------------------------------------------------------------
